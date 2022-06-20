@@ -1,0 +1,7 @@
+{
+  "name": "playzik-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
