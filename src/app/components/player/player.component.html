@@ -1,0 +1,93 @@
+<div class="player" #playerContainer>
+  <ion-content scrollY="false">
+    <div class="progress-bar">
+      <div class="progress" [style.width]="progress + '%'"></div>
+    </div>
+
+    <img src="/assets/images/albums/when-we-all-fall-asleep.jpg">
+
+    <!-- Player Minifed -->
+    <ion-row class="ion-no-padding ion-justify-content-center minified">
+      <ion-col size="2" class="ion-no-padding">
+      </ion-col>
+      <ion-col size="8" class="ion-align-self-center">
+        <strong>All the Good Girls Go to Hell</strong><br>
+        <span>Billie Eilish</span>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center ion-no-padding ion-align-self-center">
+        <ion-button fill="clear" (click)="start(playlist[0])" color="light">
+          <ion-icon name="play-sharp" color="light" size="large"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <!-- Player -->
+    <ion-row class="fullscreen-player">
+      <!-- Heading -->
+      <ion-header>
+        <ion-row>
+          <ion-col size="2" class="ion-text-left">
+            <ion-icon name="chevron-down-outline"></ion-icon>
+          </ion-col>
+          <ion-col size="2" offset="8" class="ion-text-right">
+            <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-header>
+      <ion-grid>
+        <ion-row class="ion-justify-content-center ion-align-self-center">
+          <ion-col size="auto" class="ion-text-center">
+            <strong>All the Good Girls Go to Hell</strong><br>
+            <small>Billie Eilish</small>
+          </ion-col>
+        </ion-row>
+        <ion-row class="utils-list ion-justify-content-between ion-align-self-center ion-text-center ion-no-padding">
+          <ion-col>
+            <ion-icon name="share-social-outline"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="add-outline"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="arrow-down-outline"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="heart-outline"></ion-icon>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-range #range [(ngModel)]="progress" max="100" color="success" (ionKnobMoveEnd)="seek($event)">
+            </ion-range>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-between ion-align-items-center ion-text-center">
+          <ion-col>
+            <ion-button fill="clear" (click)="prev()" color="light">
+              <ion-icon slot="icon-only" name="play-skip-back"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col class="ion-no-padding ion-no-margin" *ngIf="!isPlaying">
+            <ion-button class="pause-resume" fill="clear" (click)="togglePlay(false)" color="primary">
+              <ion-icon slot="icon-only" name="play-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col class="ion-no-padding ion-no-margin" *ngIf="isPlaying">
+            <ion-button class="pause-resume" fill="clear" (click)="togglePlay(true)" color="primary">
+              <ion-icon slot="icon-only" name="pause-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button fill="clear" (click)="next()" color="light">
+              <ion-icon slot="icon-only" name="play-skip-forward"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-footer>
+        <app-player-footer #footer></app-player-footer>
+      </ion-footer>
+    </ion-row>
+  </ion-content>
+</div>

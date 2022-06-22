@@ -1,0 +1,20 @@
+.drawer {
+  box-shadow: rgba(0, 0, 0, .12) 0px 4px 16px;
+  height: 50px;
+  width: 100%;
+  border-radius: 20px;
+  z-index: 11;
+
+  ion-header {
+    background: var(--ion-color-dark);
+
+    .drawer-pull {
+      background: #cccccc;
+      height: 4px;
+      width: 60px;
+      border-radius: 2px;
+    }
+  }
+
+}
+
